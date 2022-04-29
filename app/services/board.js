@@ -13,6 +13,21 @@ export default function BoardService(){
                     res.status(200).json({ok:'ok'})
                 }
             })
+        },
+        getBoards(_req, res){
+            Board.find().exec(
+                (err, boards) => {
+                    res.status(200).json(boards)
+                }
+            )
+        },
+        delUsers(req, res){
+            // console.log(req)
+            console.log(req.body.boardid)
+            Board.deleteOne({ _id: req.body.boardid }, function (err) {
+                if (err) return handleError(err);
+                // deleted at most one tank document
+              });
         }
     }
 }
