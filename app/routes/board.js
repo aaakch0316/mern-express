@@ -27,8 +27,12 @@ app.get('/getBoards',  cors(corsOptions), (req, res) => {
     BoardService().getBoards(req, res)
 })
 
-app.post('/delUserApi',  cors(corsOptions), (req, res) => {  
-    BoardService().delUsers(req, res)
+app.post('/delete',  cors(corsOptions), (req, res) => {  
+    BoardService().delBoards(req, res)
+})
+
+app.post('/update',  cors(corsOptions), (req, res) => {  
+    BoardService().updateBoards(req, res)
 })
 
 export default app

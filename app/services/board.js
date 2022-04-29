@@ -21,12 +21,16 @@ export default function BoardService(){
                 }
             )
         },
-        delUsers(req, res){
-            // console.log(req)
+        delBoards(req, res){
             console.log(req.body.boardid)
             Board.deleteOne({ _id: req.body.boardid }, function (err) {
                 if (err) return handleError(err);
-                // deleted at most one tank document
+              });
+        },
+        updateBoards(req, res){
+            console.log(req.body.boardid)
+            Board.updateOne({ _id: req.body.boardid }, req.body, function (err) {
+                if (err) return handleError(err);
               });
         }
     }
