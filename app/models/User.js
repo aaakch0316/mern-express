@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import applyDotenv from '../lambdas/applyDotenv'
+import applyDotenv from '../lambdas/applyDotenv.js'
 
 export default function UserModel(mongoose){ 
     const { jwtSecret } = applyDotenv(dotenv)
@@ -37,7 +37,7 @@ export default function UserModel(mongoose){
         })
     }
 
-    userSchema.nethods.generateToken = function(cb){
+    userSchema.methods.generateToken = function(cb){
         console.log('userSchema.nethods.generateToken 진입')
         var user = this;
         var token = jwt.sign(user._id.toHexString(), jwtSecret)
