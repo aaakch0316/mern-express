@@ -28,10 +28,15 @@ export default function BoardService(){
               });
         },
         updateBoards(req, res){
-            console.log(req.body.boardid)
-            Board.updateOne({ _id: req.body.boardid }, req.body, function (err) {
-                if (err) return handleError(err);
-              });
+            console.log(req.body)
+            Board.updateOne({ _id: req.body.id }, req.body, function (err) {
+                if(err){
+                    res.status(500).json({message:err})
+                    return;
+                } else {
+                    res.status(200).json({ok:'ok'})
+                }
+            });
         }
     }
 }
